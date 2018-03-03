@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# TigerOS script to set GTK dark theme
+# Author: Tim Zabel <tjz8659@rit.edu>
+
+path="/home/$USER/.config/gtk-3.0"
+cmd=$( cat $path/settings.ini | tail -c 2 )
+
+if [ ! -e $path/settings.ini ] ; then
+cat <<EOF >> $path/settings.ini
+[Settings]
+gtk-application-prefer-dark-theme=0
+EOF
+fi
+
+if [ $cmd -eq 1 ]
+then
+    sed -i 's/1/0/' $path/settings.ini
+else
+    sed -i 's/0/1' $path/settings.ini
+fi
+
+exit 0
