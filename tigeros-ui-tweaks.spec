@@ -34,9 +34,9 @@ exec .%{_prefix}/local/bin/dark-theme
 %{_prefix}/local/bin/paper-icon-theme
 
 %changelog
-* Mar 2, 2018
+* Mar 2, 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-3
 - Added proper file locations
-_ Created post section for execution of scripts
+- Created post section for execution of scripts
 *  Feb 9, 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-2
 - Added files
 - Updated spec file
