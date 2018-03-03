@@ -27,8 +27,8 @@ install -m 0644 paper-icon-theme %{buildroot}%{_prefix}/local/share
 rm -rf %{buildroot}
 
 %post
-exec %{_prefix}/local/bin/dark-theme
-exec %{_prefix}/local/bin/dark-theme
+exec .%{_prefix}/local/bin/dark-theme
+exec .%{_prefix}/local/bin/dark-theme
 
 %files
 %{_prefix}/local/bin/dark-theme
