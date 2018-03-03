@@ -1,6 +1,6 @@
 Name:           tigeros-ui-tweaks
 Version:        1.0
-Release:        1.0
+Release:        4%{?dist}
 Summary:        TigerOS User Interface Tweaks
 
 License:        GPLv3+
@@ -18,10 +18,9 @@ Various UI tweaks and modifications for TigerOS
 %setup -q
 
 %install
-rm -rf %{buildroot}
-mkdir -p %{buildroot}%{_prefix}/local/share
-install -m 0644 dark-theme %{buildroot}%{_prefix}/local/share
-install -m 0644 paper-icon-theme %{buildroot}%{_prefix}/local/share
+%{__mkdir_p} %{buildroot}%{_prefix}/local/bin
+install -p -m 755 dark-theme %{buildroot}%{_prefix}/local/bin/dark-theme
+install -p -m 0644 paper-icon-theme %{buildroot}%{_prefix}/local/bin/paper-icon-theme
 
 %clean
 rm -rf %{buildroot}
@@ -35,6 +34,9 @@ exec .%{_prefix}/local/bin/dark-theme
 %{_prefix}/local/bin/paper-icon-theme
 
 %changelog
+* Mar 2, 2018
+- Added proper file locations
+_ Created post section for execution of scripts
 *  Feb 9, 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-2
 - Added files
 - Updated spec file
