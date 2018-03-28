@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Installs and sets defualt icon theme to the Paper theme
+# Installs and sets default icon theme to the Paper theme
 # Author: Tim Zabel <tjz8659@rit.edu>
+# Changed 28/3/2018
 
 if [ $EUID != 0 ]
 then
@@ -14,19 +15,8 @@ echo
 RUID=$(who | awk 'FNR == 1 {print $1}')
 RUSER_UID=$(id -u ${RUID})
 
-# Adding the Paper repository
-dnf config-manager --add-repo \
-    https://download.opensuse.org/repositories/home:snwh:paper/Fedora_25/home:snwh:paper.repo
-
-# Installing the Paper icon theme
-dnf install paper-icon-theme
-
 # Enabling Paper theme
 sudo -u ${RUID} DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${RUSER_UID}/bus" \
     gsettings set org.gnome.desktop.interface icon-theme Paper
 
-echo
-echo "Paper icon theme enabled."
-echo
-
-exit
+exit 0
