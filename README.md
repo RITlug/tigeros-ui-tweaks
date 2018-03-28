@@ -16,5 +16,12 @@ cd tigeros-ui-tweaks/tigeros-ui-tweaks-1.0
 sudo ./paper-icon-theme && ./dark-theme
 ```
 
+### TODO
+* Add dash-to-dock tweaks
+* Add bash commands (e.g. `tigeros-ui paper`)
+* Change source to point to mirror.ritlug.com
+* Create uninstall portion when running `dnf remove tigeros-ui-tweaks`
+* Upon install, check if dark mode is already installed. If so, don't change the value.
+
 ## Authors
 * Tim Zabel <tjz8659@rit.edu>
