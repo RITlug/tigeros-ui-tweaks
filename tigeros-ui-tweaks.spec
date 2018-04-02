@@ -5,7 +5,7 @@ Summary:        TigerOS User Interface Tweaks
 
 License:        GPLv3+
 URL:            https://github.com/RITlug/tigeros-ui-tweaks
-Source0:        https://builder.ritlug.com/packages/x86_64/%{name}-%{version}-%{release}.tar.gz
+Source0:        %{name}-%{version}-%{release}.tar.gz
 
 BuildArch:      noarch
 
