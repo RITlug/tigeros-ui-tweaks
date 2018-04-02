@@ -14,9 +14,9 @@ sudo dnf install tigeros-ui-tweaks
 ```
 
 ### TODO
-* Change source to point to mirror.ritlug.com
-* Create uninstall portion when running `dnf remove tigeros-ui-tweaks`
-* Upon install, check if dark mode is already installed. If so, don't change the value.
+* ~Change source to point to mirror.ritlug.com~
+* ~Create uninstall portion when running `dnf remove tigeros-ui-tweaks`~
+* ~Upon install, check if dark mode is already installed. If so, don't change the value.~
 * Add bash commands (e.g. `tigeros-ui paper`)
 
 ## Authors
