@@ -8,7 +8,6 @@ URL:            https://github.com/RITlug/tigeros-ui-tweaks
 Source0:        %{name}-%{version}-%{release}.tar.gz
 
 BuildArch:      noarch
-
 Requires:       bash
 Requires:       paper-icon-theme
 
@@ -32,6 +31,20 @@ install -p -m 755 paper-icon-theme %{buildroot}%{_prefix}/local/bin/paper-icon-t
 %post
 exec .%{_prefix}/local/bin/dark-theme
 exec .%{_prefix}/local/bin/dark-theme
+
+%postun
+# remove dark-theme
+path="/home/$USER/.config/gtk-3.0"
+cmd=$( grep "gtk-application-prefer-dark-theme" \
+    $path/settings.ini | tail -c 2 )
+
+if [ $cmd -eq 1 ]
+then
+    sed -i 's/1/0' $path/settings.ini
+fi
+
+# remove paper-icon-theme
+dnf remove -y paper-icon-theme
 
 %files
 %{_prefix}/local/bin/dark-theme
