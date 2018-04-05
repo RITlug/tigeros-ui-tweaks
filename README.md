@@ -4,6 +4,12 @@ The first addition, `dark-theme`, is in charge of changing the default GTK theme
 the `paper-icon-theme` package is in charge of enabling the [Paper Icon Theme](https://snwh.org/paper). This
 removes the necessity of using a tool such as the Gnome Tweak Tool and allows for a more streamlined process.
 
+## Before
+![TigerOS Before](https://raw.githubusercontent.com/RITlug/TigerOS/devel/screenshots/tigeros_before.png)
+
+## After
+![TigerOS After](https://raw.githubusercontent.com/RITlug/TigerOS/devel/screenshots/tigeros_after.png)
+
 ### Prerequisites
 This software is built assuming you are running TigerOS or a Fedora derivative
 
