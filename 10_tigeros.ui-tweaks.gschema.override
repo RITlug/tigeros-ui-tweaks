@@ -10,3 +10,6 @@ name="Arc-Darker"
 [org.gnome.desktop.interface]
 font-name="Overpass 11"
 monospace-font-name="Overpass Mono 11"
+
+[org.gnome.nautilus.desktop]
+font="Overpass 11"
