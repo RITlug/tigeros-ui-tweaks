@@ -1,0 +1,8 @@
+[org.gnome.desktop.interface]
+gtk-theme="Arc-Darker"
+
+[org.gnome.desktop.wm.preferences]
+theme="Arc-Darker"
+
+[org.gnome.shell.extensions.user-theme]
+name="Arc-Darker"
