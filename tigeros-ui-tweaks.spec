@@ -1,5 +1,5 @@
 Name:           tigeros-ui-tweaks
-Version:        1
+Version:        1.0
 Release:        5%{?dist}
 Summary:        TigerOS User Interface Tweaks
 
@@ -25,7 +25,7 @@ a default dark GTK theme.
 %{__mkdir_p} %{buildroot}%{_datadir}/glib-2.0/schemas
 install -p -m 755 dark-theme %{buildroot}%{_prefix}/local/bin/dark-theme
 install -p -m 755 paper-icon-theme %{buildroot}%{_prefix}/local/bin/paper-icon-theme
-install -p -m 644 tigeros.ui-tweaks.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/tigeros.ui-tweaks.gschema.override
+install -p -m 644 10_tigeros.ui-tweaks.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %post
 exec .%{_prefix}/local/bin/dark-theme
@@ -58,7 +58,7 @@ dconf update
 %{_prefix}/local/bin/paper-icon-theme
 %defattr(-,root,root,-)
 %doc LICENSE
-%{_datadir}/glib-2.0/schemas/tigeros.ui-tweaks.gschema.override
+%{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %changelog
 * Wed Apr 25 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-5
