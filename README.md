@@ -8,7 +8,7 @@ removes the necessity of using a tool such as the Gnome Tweak Tool and allows fo
 ![TigerOS Before](https://raw.githubusercontent.com/RITlug/TigerOS/devel/screenshots/tigeros_before.png)
 
 ## After
-![TigerOS After](https://raw.githubusercontent.com/RITlug/TigerOS/devel/screenshots/tigeros_after.png)
+![TigerOS After](https://raw.githubusercontent.com/RITlug/TigerOS/master/screenshots/tigeros_tweaks.png)
 
 ### Prerequisites
 This software is built assuming you are running TigerOS or a Fedora derivative
