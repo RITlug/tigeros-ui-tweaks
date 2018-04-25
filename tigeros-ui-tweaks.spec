@@ -1,6 +1,6 @@
 Name:           tigeros-ui-tweaks
 Version:        1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        TigerOS User Interface Tweaks
 
 License:        GPLv3+
@@ -10,6 +10,7 @@ Source0:        %{name}-%{version}-%{release}.tar.gz
 BuildArch:      noarch
 Requires:       bash
 Requires:       paper-icon-theme
+Requires:       arc-theme
 
 %description
 Various UI tweaks and modifications for TigerOS. 
@@ -25,12 +26,16 @@ dnf -y config-manager --add-repo \
 
 %install
 %{__mkdir_p} %{buildroot}%{_prefix}/local/bin
+%{__mkdir_p} %{buildroot}%{_datadir}/glib-2.0/schemas
 install -p -m 755 dark-theme %{buildroot}%{_prefix}/local/bin/dark-theme
 install -p -m 755 paper-icon-theme %{buildroot}%{_prefix}/local/bin/paper-icon-theme
+install -p -m 644 tigeros.ui-tweaks.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/tigeros.ui-tweaks.gschema.override
 
 %post
 exec .%{_prefix}/local/bin/dark-theme
 exec .%{_prefix}/local/bin/dark-theme
+glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null
+dconf update
 
 %postun
 # remove dark-theme
@@ -46,11 +51,23 @@ fi
 # remove paper-icon-theme
 dnf remove -y paper-icon-theme
 
+# remove arc-darker
+dnf remove -y arc-theme
+rm /usr/share/glib-2.0/schemas/tigeros.ui-tweaks.gschema.override
+glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null
+dconf update
+
 %files
 %{_prefix}/local/bin/dark-theme
 %{_prefix}/local/bin/paper-icon-theme
+%defattr(-,root,root,-)
+%doc LICENSE
+%{_datadir}/glib-2.0/schemas/tigeros.ui-tweaks.gschema.override
 
 %changelog
+* Wed Apr 25 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-5
+- Add Arc-Dark gschema installation
+
 * Tue Mar 27 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-4
 - Updated to follow newer Fedora docs
 - Updated proper permissioning system
