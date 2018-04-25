@@ -46,11 +46,6 @@ then
     sed -i 's/1/0' $path/settings.ini
 fi
 
-# remove paper-icon-theme
-dnf remove -y paper-icon-theme
-
-# remove arc-darker
-dnf remove -y arc-theme
 rm /usr/share/glib-2.0/schemas/tigeros.ui-tweaks.gschema.override
 glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null
 dconf update
@@ -66,6 +61,7 @@ dconf update
 * Wed Apr 25 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-5
 - Add Arc-Dark gschema installation
 - Removed snwh:paper repo
+- Updated package removal
 
 * Tue Mar 27 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-4
 - Updated to follow newer Fedora docs
