@@ -11,6 +11,8 @@ BuildArch:      noarch
 Requires:       bash
 Requires:       paper-icon-theme
 Requires:       arc-theme
+Requires:       overpass-fonts
+Requires:       overpass-mono-fonts
 
 %description
 Various UI tweaks and modifications for TigerOS. 
