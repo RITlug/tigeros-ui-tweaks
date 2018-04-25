@@ -20,10 +20,6 @@ a default dark GTK theme.
 %prep
 %setup -q
 
-%pre
-dnf -y config-manager --add-repo \
-    https://download.opensuse.org/repositories/home:snwh:paper/Fedora_25/home:paper.repo
-
 %install
 %{__mkdir_p} %{buildroot}%{_prefix}/local/bin
 %{__mkdir_p} %{buildroot}%{_datadir}/glib-2.0/schemas
@@ -67,6 +63,7 @@ dconf update
 %changelog
 * Wed Apr 25 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-5
 - Add Arc-Dark gschema installation
+- Removed snwh:paper repo
 
 * Tue Mar 27 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-4
 - Updated to follow newer Fedora docs
