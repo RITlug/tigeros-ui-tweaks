@@ -1,18 +1,19 @@
 [org.gnome.desktop.interface]
 gtk-theme="Arc-Darker"
+font-name="Overpass 11"
+monospace-font-name="Overpass Mono 11"
+clock-format="12h"
+clock-show-date="true"
+show-battery-percentage="true"
+
+[org.gnome.desktop.screensaver]
+picture-uri="'file:///usr/share/backgrounds/tigeros/tigeros.xml'"
 
 [org.gnome.desktop.wm.preferences]
 theme="Arc-Darker"
 
 [org.gnome.shell.extensions.user-theme]
 name="Arc-Darker"
-
-[org.gnome.desktop.interface]
-font-name="Overpass 11"
-monospace-font-name="Overpass Mono 11"
-clock-format="12h"
-clock-show-date="true"
-show-battery-percentage="true"
 
 [org.gnome.nautilus.desktop]
 font="Overpass 11"
