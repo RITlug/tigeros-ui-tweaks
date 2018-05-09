@@ -26,7 +26,6 @@ a default dark GTK theme.
 %{__mkdir_p} %{buildroot}%{_prefix}/local/bin
 %{__mkdir_p} %{buildroot}%{_datadir}/glib-2.0/schemas
 install -p -m 755 dark-theme %{buildroot}%{_prefix}/local/bin/dark-theme
-install -p -m 755 paper-icon-theme %{buildroot}%{_prefix}/local/bin/paper-icon-theme
 install -p -m 644 10_tigeros.ui-tweaks.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %post
@@ -52,7 +51,6 @@ dconf update
 
 %files
 %{_prefix}/local/bin/dark-theme
-%{_prefix}/local/bin/paper-icon-theme
 %defattr(-,root,root,-)
 %doc LICENSE
 %{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
@@ -62,6 +60,7 @@ dconf update
 - Add Arc-Dark gschema installation
 - Removed snwh:paper repo
 - Updated package removal
+- paper-icon-theme bash script no longer necessary
 
 * Tue Mar 27 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-4
 - Updated to follow newer Fedora docs
