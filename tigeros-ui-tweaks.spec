@@ -51,7 +51,7 @@ dconf update
 %files
 %{_prefix}/local/bin/dark-theme
 %defattr(-,root,root,-)
-%doc LICENSE
+%license LICENSE
 %{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %changelog
