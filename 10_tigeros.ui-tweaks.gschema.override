@@ -1,5 +1,6 @@
 [org.gnome.desktop.interface]
 gtk-theme="Arc-Darker"
+icon-theme="Paper"
 font-name="Overpass 11"
 monospace-font-name="Overpass Mono 11"
 clock-format="12h"

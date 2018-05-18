@@ -30,7 +30,6 @@ install -p -m 644 10_tigeros.ui-tweaks.gschema.override %{buildroot}%{_datadir}/
 
 %post
 exec .%{_prefix}/local/bin/dark-theme
-exec .%{_prefix}/local/bin/dark-theme
 glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null
 dconf update
 
