@@ -1,6 +1,6 @@
 Name:           tigeros-ui-tweaks
 Version:        1.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        TigerOS User Interface Tweaks
 
 License:        GPLv3+
@@ -34,14 +34,22 @@ glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null
 dconf update
 
 %postun
-# remove dark-theme
-path="/home/$USER/.config/gtk-3.0"
+# only path_user or path_pre will work depending on when package is installed
+path_pre="/etc/skel/.config/gtk-3.0"
+path_user="/home/$USER/.config/gtk-3.0"
+
 cmd=$( grep "gtk-application-prefer-dark-theme" \
-    $path/settings.ini | tail -c 2 )
+    $path_pre/settings.ini | tail -c 2 )
+
+cmd_user=$( grep "gtk-application-prefer-dark-theme" \
+    $path_user/settings.ini | tail -c 2 )
 
 if [ $cmd -eq 1 ]
 then
     sed -i 's/1/0' $path/settings.ini
+elif [ $cmd_user -eq 1 ]
+then
+    sed -i 's/1/0' $path_user/settings.ini
 fi
 
 rm /usr/share/glib-2.0/schemas/tigeros.ui-tweaks.gschema.override
@@ -55,6 +63,10 @@ dconf update
 %{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %changelog
+* Thu Aug 09 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-7
+- Fix #8
+- Add /etc/skel settings.ini file
+
 * Fri Jun 15 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-6
 - fix dark-theme post exec
 
