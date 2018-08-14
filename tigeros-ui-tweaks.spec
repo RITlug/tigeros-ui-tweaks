@@ -1,6 +1,6 @@
 Name:           tigeros-ui-tweaks
 Version:        1.0
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        TigerOS User Interface Tweaks
 
 License:        GPLv3+
@@ -25,6 +25,7 @@ a default dark GTK theme.
 %install
 %{__mkdir_p} %{buildroot}%{_prefix}/local/bin
 %{__mkdir_p} %{buildroot}%{_datadir}/glib-2.0/schemas
+%{__mkdir_p} %{buildroot}/etc/skel/.config/gtk-3.0
 install -p -m 755 dark-theme %{buildroot}%{_prefix}/local/bin/dark-theme
 install -p -m 644 10_tigeros.ui-tweaks.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
@@ -63,6 +64,9 @@ dconf update
 %{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %changelog
+* Mon Aug 13 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-8
+- Create /etc/skel/.config/gtk-3.0 directory
+
 * Thu Aug 09 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-7
 - Fix #8
 - Add /etc/skel settings.ini file
