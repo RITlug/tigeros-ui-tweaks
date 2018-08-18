@@ -1,6 +1,6 @@
 Name:           tigeros-ui-tweaks
 Version:        1.0
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        TigerOS User Interface Tweaks
 
 License:        GPLv3+
@@ -25,32 +25,22 @@ a default dark GTK theme.
 %install
 %{__mkdir_p} %{buildroot}%{_prefix}/local/bin
 %{__mkdir_p} %{buildroot}%{_datadir}/glib-2.0/schemas
-%{__mkdir_p} %{buildroot}/etc/skel/.config/gtk-3.0
-install -p -m 755 dark-theme %{buildroot}%{_prefix}/local/bin/dark-theme
+#install -p -m 755 dark-theme %{buildroot}%{_prefix}/local/bin/dark-theme
 install -p -m 644 10_tigeros.ui-tweaks.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %post
-%{_prefix}/local/bin/dark-theme
+#%{_prefix}/local/bin/dark-theme
 glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null
 dconf update
 
 %postun
-# only path_user or path_pre will work depending on when package is installed
-path_pre="/etc/skel/.config/gtk-3.0"
-path_user="/home/$USER/.config/gtk-3.0"
-
+path="/home/$USER/.config/gtk-3.0"
 cmd=$( grep "gtk-application-prefer-dark-theme" \
-    $path_pre/settings.ini | tail -c 2 )
+    $path/settings.ini | tail -c 2 )
 
-cmd_user=$( grep "gtk-application-prefer-dark-theme" \
-    $path_user/settings.ini | tail -c 2 )
-
-if [ $cmd -eq 1 ]
-then
+# remove dark theme if file exists
+if [ -f $path/settings.ini && $cmd -eq 1 ] ; then
     sed -i 's/1/0' $path/settings.ini
-elif [ $cmd_user -eq 1 ]
-then
-    sed -i 's/1/0' $path_user/settings.ini
 fi
 
 rm /usr/share/glib-2.0/schemas/tigeros.ui-tweaks.gschema.override
@@ -58,12 +48,15 @@ glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null
 dconf update
 
 %files
-%{_prefix}/local/bin/dark-theme
+#%{_prefix}/local/bin/dark-theme
 %defattr(-,root,root,-)
 %license LICENSE
 %{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %changelog
+* Sat Aug 18 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-9
+- Remove dark theme installation
+
 * Mon Aug 13 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-8
 - Create /etc/skel/.config/gtk-3.0 directory
 
