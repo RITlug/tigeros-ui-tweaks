@@ -1,6 +1,6 @@
 Name:           tigeros-ui-tweaks
 Version:        1.0
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        TigerOS User Interface Tweaks
 
 License:        GPLv3+
@@ -54,6 +54,9 @@ dconf update
 %{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %changelog
+* Wed Oct 17 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-10
+- Fedora 29 Build
+
 * Sat Aug 18 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-9
 - Remove dark theme installation
 
