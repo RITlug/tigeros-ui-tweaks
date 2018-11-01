@@ -1,6 +1,6 @@
 Name:           tigeros-ui-tweaks
 Version:        1.0
-Release:        6%{?dist}
+Release:        10%{?dist}
 Summary:        TigerOS User Interface Tweaks
 
 License:        GPLv3+
@@ -25,22 +25,21 @@ a default dark GTK theme.
 %install
 %{__mkdir_p} %{buildroot}%{_prefix}/local/bin
 %{__mkdir_p} %{buildroot}%{_datadir}/glib-2.0/schemas
-install -p -m 755 dark-theme %{buildroot}%{_prefix}/local/bin/dark-theme
+#install -p -m 755 dark-theme %{buildroot}%{_prefix}/local/bin/dark-theme
 install -p -m 644 10_tigeros.ui-tweaks.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %post
-%{_prefix}/local/bin/dark-theme
+#%{_prefix}/local/bin/dark-theme
 glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null
 dconf update
 
 %postun
-# remove dark-theme
 path="/home/$USER/.config/gtk-3.0"
 cmd=$( grep "gtk-application-prefer-dark-theme" \
     $path/settings.ini | tail -c 2 )
 
-if [ $cmd -eq 1 ]
-then
+# remove dark theme if file exists
+if [ -f $path/settings.ini && $cmd -eq 1 ] ; then
     sed -i 's/1/0' $path/settings.ini
 fi
 
@@ -49,12 +48,25 @@ glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null
 dconf update
 
 %files
-%{_prefix}/local/bin/dark-theme
+#%{_prefix}/local/bin/dark-theme
 %defattr(-,root,root,-)
 %license LICENSE
 %{_datadir}/glib-2.0/schemas/10_tigeros.ui-tweaks.gschema.override
 
 %changelog
+* Wed Oct 17 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-10
+- Fedora 29 Build
+
+* Sat Aug 18 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-9
+- Remove dark theme installation
+
+* Mon Aug 13 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-8
+- Create /etc/skel/.config/gtk-3.0 directory
+
+* Thu Aug 09 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-7
+- Fix #8
+- Add /etc/skel settings.ini file
+
 * Fri Jun 15 2018 Tim Zabel <tjz8659@rit.edu> - 1.0-6
 - fix dark-theme post exec
 
